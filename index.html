@@ -47,7 +47,7 @@
             position: relative;
         }
 
-        /* ENCABEZADO (Basado en la referencia visual institucional) */
+        /* ENCABEZADO */
         .header {
             background: linear-gradient(125deg, #004d2e 0%, #1e5a2d 45%, #5a3e24 100%);
             color: white;
@@ -68,6 +68,7 @@
         .header h1:before {
             content: "🌿";
             font-size: 2rem;
+            line-height: 1;
         }
 
         .header-sub {
@@ -122,10 +123,17 @@
             align-items: center;
             gap: 6px;
         }
+        
+        .creditos-institucional {
+            width: 100%;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            font-weight: 600;
+            color: #e7dcc8;
+        }
 
-        /* =========================================
-           NUEVO PARADIGMA: MENÚ TIPO DASHBOARD (CARDS)
-           ========================================= */
+        /* MENU DASHBOARD */
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -184,13 +192,11 @@
             line-height: 1.3;
         }
 
-        /* =========================================
-           BARRA DE NAVEGACIÓN DE RETORNO (VOLVER)
-           ========================================= */
+        /* BARRA NAVEGACIÓN DE RETORNO */
         .back-nav {
-            display: none; /* Oculta por defecto */
+            display: none;
             position: sticky;
-            top: 4px; /* Respetando la barra de progreso */
+            top: 4px;
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(10px);
             padding: 16px 40px;
@@ -238,10 +244,9 @@
             padding-left: 20px;
         }
 
-        /* ========================================= */
-
+        /* CONTENIDO TEXTOS */
         .tab-content {
-            display: none; /* Todo el contenido oculto al inicio */
+            display: none;
             padding: 40px;
             background: white;
             animation: fadeSlide 0.4s cubic-bezier(0.16, 1, 0.3, 1);
@@ -256,265 +261,164 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Estilos del texto y grillas interiores (Intactos) */
-        .original-text p, 
-        .original-text li {
-            text-align: justify;
-            line-height: 1.65;
-            letter-spacing: 0.012em;
-            margin-bottom: 1.2rem;
-            color: #2c2a26;
+        .original-text p, .original-text li {
+            text-align: justify; line-height: 1.65; letter-spacing: 0.012em; margin-bottom: 1.2rem; color: #2c2a26;
         }
+        .original-text p:last-child { margin-bottom: 0; }
+        .bold-label { font-weight: 700; color: #004d2e; }
+        .indent-list { margin-left: 2rem; list-style-type: none; padding-left: 1rem; margin-bottom: 1.5rem; }
         
-        .original-text p:last-child {
-            margin-bottom: 0;
-        }
+        .card-list { margin-left: 0; padding-left: 0; list-style: none; }
+        .card-list li { position: relative; padding-left: 1.2rem; margin-bottom: 0.8rem; text-align: left; }
+        .card-list li::before { content: "•"; color: #c9a87b; font-weight: bold; font-size: 1.2rem; position: absolute; left: 0; top: -2px; }
 
-        .bold-label {
-            font-weight: 700;
-            color: #004d2e;
-        }
-
-        .indent-list {
-            margin-left: 2rem;
-            list-style-type: none;
-            padding-left: 1rem;
-            margin-bottom: 1.5rem;
-        }
-        
-        .card-list {
-            margin-left: 0;
-            padding-left: 0;
-            list-style: none;
-        }
-        .card-list li {
-            position: relative;
-            padding-left: 1.2rem;
-            margin-bottom: 0.8rem;
-            text-align: left;
-        }
-        .card-list li::before {
-            content: "•";
-            color: #c9a87b;
-            font-weight: bold;
-            font-size: 1.2rem;
-            position: absolute;
-            left: 0;
-            top: -2px;
-        }
-
-        .blocks-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 24px;
-            margin: 24px 0;
-        }
-        
-        .blocks-grid.three-cols {
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        }
+        .blocks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin: 24px 0; }
+        .blocks-grid.three-cols { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 
         .content-card {
-            background: #ffffff;
-            border: 1px solid #efe5d5;
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
-            display: flex;
-            flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            background: #ffffff; border: 1px solid #efe5d5; border-radius: 20px; padding: 28px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03); display: flex; flex-direction: column; transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
+        .content-card:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0, 45, 25, 0.06); border-color: #e2d2ba; }
+        .content-card.full-width { grid-column: 1 / -1; }
+        .content-card.featured { background: #fdfbf7; border-left: 5px solid #004d2e; }
+        .content-card.warning { background: #fffcf7; border-left: 5px solid #c9a87b; }
 
-        .content-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0, 45, 25, 0.06);
-            border-color: #e2d2ba;
-        }
+        .card-title { font-size: 1.05rem; font-weight: 700; color: #2a5a2c; margin-bottom: 16px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid #f0e6d6; padding-bottom: 12px; }
 
-        .content-card.full-width {
-            grid-column: 1 / -1;
-        }
+        .norma-table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 0.9rem; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 12px rgba(0, 45, 25, 0.06); }
+        .norma-table th, .norma-table td { border: 1px solid #ddd0bc; padding: 16px 18px; vertical-align: top; background-color: #fff; text-align: left; }
+        .norma-table th { background-color: #eef0e5; font-weight: 700; color: #2f5d2c; border-bottom: 2px solid #c9a87b; }
 
-        .content-card.featured {
-            background: #fdfbf7;
-            border-left: 5px solid #004d2e;
-        }
-        
-        .content-card.warning {
-            background: #fffcf7;
-            border-left: 5px solid #c9a87b;
-        }
-
-        .card-title {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #2a5a2c;
-            margin-bottom: 16px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 1px solid #f0e6d6;
-            padding-bottom: 12px;
-        }
-
-        .norma-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 24px 0;
-            font-size: 0.9rem;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0, 45, 25, 0.06);
-        }
-
-        .norma-table th, .norma-table td {
-            border: 1px solid #ddd0bc;
-            padding: 16px 18px;
-            vertical-align: top;
-            background-color: #fff;
-            text-align: left;
-        }
-
-        .norma-table th {
-            background-color: #eef0e5;
-            font-weight: 700;
-            color: #2f5d2c;
-            border-bottom: 2px solid #c9a87b;
-        }
-
-        .badge-propuesta {
-            background-color: #e7dbbc;
-            color: #4f3b22;
-            display: inline-block;
-            border-radius: 60px;
-            padding: 6px 16px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-bottom: 24px;
-            border: 1px solid #d3c49e;
-        }
+        .badge-propuesta { background-color: #e7dbbc; color: #4f3b22; display: inline-block; border-radius: 60px; padding: 6px 16px; font-size: 0.75rem; font-weight: 700; margin-bottom: 24px; border: 1px solid #d3c49e; }
 
         .accordion-section { margin: 2rem 0; }
-        .accordion-section details {
-            background: #ffffff;
-            border-radius: 20px;
-            border: 1px solid #e2d4c0;
-            transition: all 0.3s ease;
-            overflow: hidden;
-            margin-bottom: 1rem;
-        }
-        .accordion-section details[open] {
-            box-shadow: 0 8px 24px rgba(0, 55, 30, 0.06);
-            border-color: #c9a87b;
-        }
-        .accordion-section summary {
-            font-weight: 700;
-            font-size: 1.05rem;
-            padding: 20px 24px;
-            background: #fefaf2;
-            cursor: pointer;
-            list-style: none;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: #2a5a2c;
-            transition: background 0.2s ease;
-        }
+        .accordion-section details { background: #ffffff; border-radius: 20px; border: 1px solid #e2d4c0; transition: all 0.3s ease; overflow: hidden; margin-bottom: 1rem; }
+        .accordion-section details[open] { box-shadow: 0 8px 24px rgba(0, 55, 30, 0.06); border-color: #c9a87b; }
+        .accordion-section summary { font-weight: 700; font-size: 1.05rem; padding: 20px 24px; background: #fefaf2; cursor: pointer; list-style: none; display: flex; align-items: center; gap: 12px; color: #2a5a2c; transition: background 0.2s ease; }
         .accordion-section summary::-webkit-details-marker { display: none; }
-        .accordion-section summary:before {
-            content: "▶";
-            font-size: 0.8rem;
-            transition: transform 0.3s ease;
-            color: #b87a3a;
-        }
+        .accordion-section summary:before { content: "▶"; font-size: 0.8rem; transition: transform 0.3s ease; color: #b87a3a; }
         .accordion-section details[open] summary:before { transform: rotate(90deg); }
         .accordion-section summary:hover { background: #f4ecdf; }
         details[open] summary ~ * { animation: sweep 0.4s ease-in-out; }
-        @keyframes sweep {
-            0% { opacity: 0; transform: translateY(-10px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        .accordion-content {
-            padding: 20px 24px 24px 24px;
-            background: #ffffff;
-            border-top: 1px solid #efe3d0;
-        }
+        @keyframes sweep { 0% { opacity: 0; transform: translateY(-10px); } 100% { opacity: 1; transform: translateY(0); } }
+        .accordion-content { padding: 20px 24px 24px 24px; background: #ffffff; border-top: 1px solid #efe3d0; }
 
         .download-container { text-align: center; margin: 2rem 0; }
-        .btn-download {
-            background-color: #004d2e; color: white; border: none; padding: 16px 36px;
-            font-size: 1.05rem; font-weight: 600; border-radius: 60px; cursor: pointer;
-            display: inline-flex; align-items: center; gap: 12px; transition: all 0.25s ease;
-            box-shadow: 0 6px 12px rgba(0, 77, 46, 0.15); font-family: inherit; text-decoration: none;
-        }
+        .btn-download { background-color: #004d2e; color: white; border: none; padding: 16px 36px; font-size: 1.05rem; font-weight: 600; border-radius: 60px; cursor: pointer; display: inline-flex; align-items: center; gap: 12px; transition: all 0.25s ease; box-shadow: 0 6px 12px rgba(0, 77, 46, 0.15); font-family: inherit; text-decoration: none; }
         .btn-download:hover { background-color: #1a633d; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 77, 46, 0.2); }
 
         /* =========================================
-           ADAPTACIÓN A MÓVILES
+           OPTMIZACIÓN MÁXIMA PARA MÓVILES (CONDENSADO)
            ========================================= */
         @media (max-width: 860px) {
-            body { padding: 16px 8px; }
+            body { padding: 8px; }
             .dashboard-container { border-radius: 20px; }
             
-            /* Encabezado */
-            .header h1 { font-size: 1.4rem; }
-            .header { padding: 28px 24px; }
-            .autoridades { flex-direction: column; }
+            /* Encabezado Súper Condensado */
+            .header { padding: 20px 16px; }
+            .header h1 { 
+                font-size: 1.3rem; 
+                margin-bottom: 4px;
+                gap: 8px;
+            }
+            .header h1:before { font-size: 1.5rem; }
+            .header-sub { 
+                font-size: 0.85rem; 
+                padding-left: 12px; 
+                margin: 4px 0 8px 0; 
+                border-left-width: 3px;
+                line-height: 1.3;
+            }
             
-            /* Grilla del Menú Principal: 1 columna en celulares */
+            /* Caja Autoridades Condensada */
+            .autoridades { 
+                margin-top: 12px; 
+                padding: 10px 14px; 
+                border-radius: 16px; 
+                gap: 8px;
+            }
+            .autoridades p { font-size: 0.8rem; }
+            .autoridades p span strong { font-size: 0.85rem; }
+            .autoridades p span span { font-size: 0.7rem; }
+            
+            /* Créditos agrupados y minimalistas para móvil */
+            .creditos {
+                margin-top: 12px;
+                padding-top: 12px;
+                gap: 6px;
+                flex-direction: column; /* Apila los créditos verticalmente de forma compacta */
+            }
+            .creditos span {
+                background: transparent; /* Quita la caja tipo etiqueta */
+                border: none; /* Quita bordes */
+                padding: 0;
+                font-size: 0.7rem;
+                color: rgba(255,255,255,0.85); /* Texto un poco más tenue */
+                gap: 6px;
+            }
+            .creditos-institucional {
+                margin-top: 4px;
+                padding-top: 8px;
+                font-size: 0.75rem;
+                text-align: left;
+            }
+            
+            /* Grilla del Menú Principal */
             .menu-grid {
                 grid-template-columns: 1fr;
-                padding: 24px 16px;
-                gap: 16px;
+                padding: 20px 16px;
+                gap: 12px;
             }
             .menu-card {
-                padding: 24px 16px;
+                padding: 16px;
                 flex-direction: row;
                 justify-content: flex-start;
                 text-align: left;
-                gap: 20px;
-                border-radius: 20px;
+                gap: 16px;
+                border-radius: 16px;
+                min-height: 80px;
             }
             .menu-card .icon {
-                font-size: 2.2rem;
-                width: 60px;
-                height: 60px;
+                font-size: 1.8rem;
+                width: 50px;
+                height: 50px;
                 flex-shrink: 0;
                 margin-bottom: 0;
             }
-            .menu-card .title {
-                font-size: 1.1rem;
-            }
+            .menu-card .title { font-size: 1rem; }
 
             /* Navegación de Retorno */
             .back-nav {
-                padding: 12px 16px;
-                flex-direction: column;
-                align-items: flex-start;
+                padding: 10px 16px;
+                flex-direction: row; /* Mantener en una línea si es posible */
+                align-items: center;
                 gap: 12px;
             }
             .current-section-title {
                 border-left: none;
-                border-top: 1px solid #e0d3c0;
                 padding-left: 0;
-                padding-top: 10px;
-                width: 100%;
-                font-size: 1rem;
+                font-size: 0.95rem;
+                color: #5e4a31;
+                font-weight: 500;
             }
             .btn-back {
-                padding: 8px 18px;
-                font-size: 0.85rem;
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                gap: 4px;
+                white-space: nowrap;
             }
+            .btn-back svg { width: 16px; height: 16px; }
 
             /* Contenidos */
-            .tab-content { padding: 24px 16px; }
+            .tab-content { padding: 20px 16px; }
             .indent-list { margin-left: 1rem; }
             .blocks-grid { grid-template-columns: 1fr; gap: 16px;}
+            .content-card { padding: 20px; }
         }
 
         footer { background: #f6f0e6; padding: 24px 36px; font-size: 0.75rem; color: #5e4a31; text-align: center; border-top: 1px solid #e0cfb8; font-weight: 500; }
         h3 { font-size: 1.5rem; font-weight: 700; color: #2a5a2c; margin-top: 0; margin-bottom: 1.4rem; border-left: 5px solid #c9a87b; padding-left: 18px; line-height: 1.3; }
-        
         .pdf-placeholder { background: #f9f4ea; border-radius: 28px; padding: 40px; text-align: center; border: 2px dashed #c9a87b; }
         .page-marker { font-size: 0.7rem; color: #b89a6a; margin-top: 2.5rem; padding-top: 1rem; border-top: 1px dashed #eee2d2; text-align: right; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
     </style>
@@ -528,18 +432,23 @@
 
 <div class="dashboard-container">
     
-    <!-- ENCABEZADO INSTITUCIONAL FIJO -->
+    <!-- ENCABEZADO INSTITUCIONAL CONDENSADO -->
     <div class="header">
-        <h1>🌿 Formador de Instructores SENA<br><span style="font-size:1.1rem; font-weight:400; opacity: 0.9;">Reconfiguración y Fortalecimiento Normativo</span></h1>
+        <h1>Formador de Instructores SENA<br><span style="font-size:0.9em; font-weight:400; opacity: 0.9;">Reconfiguración y Fortalecimiento Normativo</span></h1>
         <div class="header-sub">Propuesta Integral — Equipo Regional de Formadores Valle</div>
+        
         <div class="autoridades">
-            <p>🎯 <span><strong>Dra. Leonora Barragan Bedoya</strong><br><span style="font-size:0.75rem; font-weight:400;">Directora de Formación Profesional Integral</span></span></p>
+            <p>🎯 <span><strong>Dra. Leonora Barragan Bedoya</strong><br><span style="font-weight:400;">Directora de Formación Profesional Integral</span></span></p>
         </div>
+        
         <div class="creditos">
             <span>✍️ Compilación: Formador. Alejandro Gómez Pérez</span>
             <span>🔍 Revisión: Formadora. Yanin Lorena Rojas Ramírez</span>
             <span>🔍 Revisión: Formador. Fredy David Novoa Álvarez</span>
-            <span>🏛️ Propuesta Regional Valle</span>
+            <!-- NUEVO REVISOR AGREGADO -->
+            <span>🔍 Revisión: Formador. Elkin Yesid Astaiza</span>
+            <!-- TEXTO CAMBIADO -->
+            <span class="creditos-institucional">🏛️ Propuesta Equipo Nacional de Formadores de Instructores</span>
         </div>
     </div>
 
@@ -579,8 +488,8 @@
     <!-- BARRA DE NAVEGACIÓN SUPERIOR (Se muestra al entrar a una sección) -->
     <div class="back-nav" id="backNav">
         <button class="btn-back" id="btnBack">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
-            Volver al menú
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Volver
         </button>
         <span class="current-section-title" id="currentSectionTitle">Nombre de la sección</span>
     </div>
@@ -839,7 +748,7 @@
     </div> <!-- Cierre Content Container -->
 
     <footer>
-        🌿 SENA — Propuesta de Reconfiguración del Rol Formador de Instructores | Equipo Regional Valle
+        🌿 SENA — Propuesta de Reconfiguración del Rol Formador de Instructores | Equipo Nacional
     </footer>
 </div>
 
@@ -866,7 +775,7 @@
             
             // 2. Mostrar la barra de navegación superior (Volver)
             backNav.classList.add('active');
-            currentTitle.innerText = titleText; // Actualizar el texto que indica dónde estamos
+            currentTitle.innerText = titleText;
 
             // 3. Ocultar todos los textos y mostrar solo el seleccionado
             contents.forEach(c => c.classList.remove('active'));
@@ -874,13 +783,13 @@
 
             // 4. Subir la pantalla suavemente para que el usuario empiece a leer desde arriba
             window.scrollTo({
-                top: document.querySelector('.header').offsetHeight - 20, 
+                top: document.querySelector('.header').offsetHeight - 5, 
                 behavior: 'smooth'
             });
         });
     });
 
-    // Al hacer clic en el botón de "Volver al menú"
+    // Al hacer clic en el botón de "Volver"
     btnBack.addEventListener('click', () => {
         // 1. Ocultar todos los contenidos de texto
         contents.forEach(c => c.classList.remove('active'));
