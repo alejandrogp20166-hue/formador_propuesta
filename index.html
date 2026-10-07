@@ -122,6 +122,9 @@
             gap: 6px;
         }
 
+        /* =========================================
+           NUEVO DISEÑO DE BOTONES TIPO "CHIP/APP"
+           ========================================= */
         .tabs-nav {
             display: flex;
             flex-wrap: nowrap;
@@ -129,14 +132,14 @@
             background: rgba(254, 249, 240, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid #e0d3c0;
-            padding: 0 28px;
-            gap: 8px;
+            padding: 16px 24px; /* Más espacio arriba y abajo */
+            gap: 10px; /* Separación entre botones */
             position: sticky;
             top: 4px;
             z-index: 1000;
             scrollbar-width: none;
             -webkit-overflow-scrolling: touch;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.04);
         }
         
         .tabs-nav::-webkit-scrollbar {
@@ -144,34 +147,42 @@
         }
 
         .tab-btn {
-            background: transparent;
-            border: none;
-            padding: 16px 26px;
+            background: #ffffff;
+            border: 1px solid #e2d4c0;
+            padding: 12px 24px;
             font-size: 0.85rem;
             font-weight: 600;
-            color: #3a2c1c;
+            color: #5e4a31; /* Color tierra para los inactivos */
             cursor: pointer;
-            transition: all 0.25s ease;
-            border-radius: 20px 20px 0 0;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            border-radius: 40px; /* Forma de píldora */
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             font-family: inherit;
-            margin: 4px 0 0 0;
+            margin: 0;
             flex-shrink: 0;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.03);
         }
 
         .tab-btn:hover {
-            background: #e7dcc8;
+            background: #f4ecdf;
+            border-color: #c9a87b;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.06);
             color: #004d2e;
         }
 
+        /* Estado ACTIVO mucho más visible (Sólido) */
         .tab-btn.active {
-            background: #ffffff;
-            color: #004d2e;
-            border-bottom: 3px solid #c9a87b;
+            background: #004d2e;
+            color: #ffffff;
+            border-color: #004d2e;
             font-weight: 700;
+            box-shadow: 0 4px 12px rgba(0, 77, 46, 0.25);
         }
+
+        /* ========================================= */
 
         .tab-content {
             display: none;
@@ -381,16 +392,28 @@
         }
         .btn-download:hover { background-color: #1a633d; transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0, 77, 46, 0.2); }
 
+        /* =========================================
+           AJUSTES ESPECÍFICOS PARA MÓVILES
+           ========================================= */
         @media (max-width: 860px) {
             body { padding: 16px 8px; }
             .dashboard-container { border-radius: 20px; }
             .tab-content { padding: 24px; }
-            .tab-btn { padding: 14px 20px; font-size: 0.8rem; }
+            
+            /* Ajuste de los botones para pantallas pequeñas */
+            .tabs-nav { 
+                padding: 12px 16px; 
+                gap: 8px; /* Ligeramente más juntos en móvil */
+            }
+            .tab-btn { 
+                padding: 10px 18px; 
+                font-size: 0.82rem; 
+            }
+
             .header h1 { font-size: 1.4rem; }
             .header { padding: 28px 24px; }
             .autoridades { flex-direction: column; }
             .indent-list { margin-left: 1rem; }
-            .tabs-nav { padding: 0 16px; }
             .blocks-grid { grid-template-columns: 1fr; }
         }
 
@@ -423,7 +446,7 @@
         </div>
     </div>
 
-    <!-- NAVEGACIÓN STICKY CON SCROLL HORIZONTAL -->
+    <!-- NAVEGACIÓN STICKY CON SCROLL HORIZONTAL (DISEÑO CHIPS) -->
     <div class="tabs-nav">
         <button class="tab-btn active" data-tab="tab1">📘 1. Introducción y Pertinencia</button>
         <button class="tab-btn" data-tab="tab2">⚖️ 2. Marco Normativo</button>
@@ -563,7 +586,7 @@
         <p>Con el fin de garantizar la coherencia con la Formación Profesional Integral (FPI), se proponen las siguientes acciones de ajuste:</p>
         <p><span class="bold-label">• Unificación de la Denominación y Creación de Área Temática:</span> Consolidar formalmente el perfil bajo la denominación de "Formador de Instructores". Para lograr esto de manera efectiva, se propone la creación, en el manual de funciones, de una nueva área temática denominada "Formador de Instructores". Esta nueva área permitirá contemplar de forma integral las responsabilidades y necesidades que actualmente no son cubiertas por el área de "Pedagogía y Didáctica", la cual está diseñada para la formación general y no específicamente para la formación y el acompañamiento pedagógico a instructores.</p>
         <p><span class="bold-label">• Ajuste del Propósito Principal:</span> Modificar en el manual de funciones el verbo rector del propósito principal, migrando de "Impartir" a "Fortalecer". La nueva redacción propuesta para esta área es: "Fortalecer las competencias pedagógicas, didácticas y metodológicas de los instructores mediante acciones de formación, asesoría y acompañamiento pedagógico, de conformidad con los niveles de formación y modalidades de atención, políticas institucionales, la normatividad vigente y la programación de la oferta educativa".</p>
-        <p><span class="bold-label">• Reconocimiento de la Naturaleza del Rol:</span> Establecer que este rol se asume como una delegación de funciones específicas, análoga a la figura de la coordinación académica presente en la misma resolución. Esto legitima que el tiempo del servidor sea dedicado a la asesoría, inducción, reinducción, planes de mejoramiento y soporte pedagógico, sin la restriction operativa de estar sujeto a una asignación de horas frente a aprendices como función principal.</p>
+        <p><span class="bold-label">• Reconocimiento de la Naturaleza del Rol:</span> Establecer que este rol se asume como una delegación de funciones específicas, análoga a la figura de la coordinación académica presente en la misma resolución. Esto legitima que el tiempo del servidor sea dedicado a la asesoría, inducción, reinducción, planes de mejoramiento y soporte pedagógico, sin la restricción operativa de estar sujeto a una asignación de horas frente a aprendices como función principal.</p>
         <p><span class="bold-label">• Diferenciación Técnica:</span> Esta nueva área temática permitirá una diferenciación técnica clara frente al "Instructor de Pedagogía", centrando el rol del "Formador de Instructores" exclusivamente en la transformación de la práctica pedagógica, asegurando que el acompañamiento pedagógico a instructores en contexto sea realizado por perfiles con la idoneidad específica requerida por la institución.</p>
         <p><span class="bold-label">• Tiempo dedicado en actividades académicas:</span> Para reconocer que, en el contexto de la formación de instructores, la transferencia de conocimiento no ocurre únicamente mediante la instrucción magistral. La asesoría técnica, el acompañamiento pedagógico y la mentoría constituyen, en sí mismos, actos pedagógicos de alta complejidad. Categorizarlos como algo distinto a la "formación directa" invisibiliza la carga laboral real y afecta la integridad de los reportes en el aplicativo SOFIA Plus.</p>
         
@@ -703,11 +726,15 @@
             tabs.forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
             
+            // Lógica para que al hacer clic en móvil, el scroll ajuste la posición 
+            // del botón para que no se quede medio escondido.
+            btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+
             // Si el menú es sticky y estamos muy abajo, subimos el scroll suavemente hasta el menú
             const navTop = document.querySelector('.tabs-nav').getBoundingClientRect().top;
             if(navTop <= 4) {
                 window.scrollBy({
-                    top: navTop - 10,
+                    top: navTop - 15,
                     behavior: 'smooth'
                 });
             }
@@ -719,7 +746,13 @@
         if (document.getElementById(hashTab)) {
             document.getElementById(hashTab).classList.add('active');
             const activeBtn = document.querySelector(`.tab-btn[data-tab="${hashTab}"]`);
-            if (activeBtn) activeBtn.classList.add('active');
+            if (activeBtn) {
+                activeBtn.classList.add('active');
+                // Asegurar que el botón activo sea visible en el scroll horizontal al cargar
+                setTimeout(() => {
+                    activeBtn.scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
+                }, 100);
+            }
         }
     }
 
